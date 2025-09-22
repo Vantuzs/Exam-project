@@ -1,0 +1,6 @@
+{"message":"null value in column \"balance\" of relation \"Banks\" violates not-null constraint","code":500,"time":1756390814567}
+{"message":"null value in column \"balance\" of relation \"Banks\" violates not-null constraint","code":500,"time":1756390815194}
+{"message":"null value in column \"balance\" of relation \"Banks\" violates not-null constraint","code":500,"time":1756390815632}
+{"message":"null value in column \"balance\" of relation \"Banks\" violates not-null constraint","code":500,"time":1756390815832}
+{"message":"null value in column \"balance\" of relation \"Banks\" violates not-null constraint","code":500,"time":1756390815988}
+{"message":"null value in column \"balance\" of relation \"Banks\" violates not-null constraint","code":500,"time":1756390816147}

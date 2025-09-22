@@ -1,0 +1,86 @@
+.bottom-conteiner{
+    flex-direction: row;
+    justify-content: center;
+    gap: 300px;
+    padding-bottom: 55px;
+}
+
+.allright{
+    display: flex;
+    a{
+        text-decoration: none;
+        color: black;
+    }
+}
+
+.dot{
+    width: 3px;
+    height: 3px;
+    background-color: rgb(105, 105, 105);
+    border-radius: 50%;
+    margin: 0 15px;
+    position: relative;
+    top: 7px;
+}
+
+.approved{
+    display: flex;
+    text-decoration: none;
+}
+
+.trust-pilot{
+    width: 175px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-right: 5px;
+    border-right: 1px solid rgb(202, 202, 202);
+    strong{
+        font-weight: 700;
+        font-size: 18px;
+        color: black;
+        margin-bottom: 1px;
+    }
+}
+
+.tp-stars{
+    display: flex;
+    gap: 2px;
+    img{
+        width: 20px;
+    }
+}
+
+.tp-name{
+    span{
+        color: rgb(139, 139, 139);
+        font-weight: 600;
+        font-size: 12px;
+    }
+}
+
+.footer-ratings{
+    padding-left: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    justify-content: center;
+    strong{
+        font-weight: 700;
+        font-size: 18px;
+        color: black;
+        margin-bottom: 1px;
+        span{
+            margin-left: 5px;
+        }
+    }
+    p{
+        color: rgb(139, 139, 139);
+        font-size: 13px;
+    }
+}
+
+.social{
+    display: flex;
+    gap: 15px;
+}

@@ -1,0 +1,7 @@
+POST http://localhost:5000/setOfferStatusModerator HTTP/1.1
+Content-Type: application/json
+
+{
+    "command": "resolve",
+    "offerId": 66
+}

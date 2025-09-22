@@ -1,0 +1,40 @@
+.footer-conteiner{
+    flex-direction: row;
+    justify-content: center;
+    align-items: start;
+}
+
+.footer-col{
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+}
+
+.footer-heading{
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.footer-menu{
+    display: flex;
+    flex-direction: column;
+    a{
+        margin-bottom: 10px;
+        width: 300px;
+        text-decoration: none;
+        color: rgb(53, 53, 53);
+
+    }
+}
+
+footer{
+    margin-bottom: 100px;
+}
+
+.border-st{
+    width: 1450px;
+    border-bottom: 1px solid rgb(223, 223, 223);
+    left: 100px;
+    margin: 0 auto;
+}
