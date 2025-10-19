@@ -13,7 +13,7 @@ const ButtonGroup = () => {
                     <div className={`${styles.box} ${selected === 'yes' && styles.active}`}>
                         <h2>Yes</h2>
                         <p>But minor variations are allowed</p>
-                        <div className={styles.recomended}>Рeкомендуется</div>
+                        <div className={styles.recomended}>Recommended</div>
                         { selected === 'yes' && <img src="https://www.atom.com/html/html/static_images/contests/icon-check.svg" alt="" />}
                     </div>
                 </div>
