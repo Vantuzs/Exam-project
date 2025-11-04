@@ -117,20 +117,22 @@ class Header extends React.Component {
           </div>
         </div>
         <div className={styles.navContainer}>
+          <a href="/">
           <img
             src={`${CONSTANTS.STATIC_IMAGES_PATH}blue-logo.png`}
             className={styles.logo}
             alt="blue_logo"
           />
+          </a>
           <div className={styles.leftNav}>
             <div className={styles.nav}>
               <ul>
                 <li>
                   <a href="http://localhost:3000/atom" className={styles.events}>ATOM</a>
                 </li>
-                <li>
+                {this.props.data?.role === CONSTANTS.CUSTOMER ? <li>
                   <a href="http://localhost:3000/events" className={styles.events}>EVENTS</a>
-                </li>
+                </li>: null}
                 <li>
                   <span>NAME IDEAS</span>
                   <img

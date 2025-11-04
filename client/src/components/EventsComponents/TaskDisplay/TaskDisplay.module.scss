@@ -1,9 +1,42 @@
+@media (max-width: 380px) {
+    .box{
+
+    }
+    .wrapper{
+        width: auto;
+    }
+}
+
+.wrapper{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+
+
 .box{
     border: 2px solid #333;
     border-radius: 8px;
     padding: 10px;
     margin: 3px 0;
     transition: background 0.3s linear;
+    width: auto;
+    .buttonGr{
+        display: none;
+        border: none;
+        border-radius: 10px;
+        background-color: #dbdbdb;
+        padding: 3px 12px;
+        &:hover{
+            background-color: #c0c0c0 ;
+        }
+    }
+&:hover{
+    .buttonGr{
+        display: block;
+    }
+}
 }
 
 .timeLeft{
@@ -11,5 +44,6 @@
 }
 
 .timer{
-    margin-left: 100px;
+    display: flex;
+    justify-content: end;
 }

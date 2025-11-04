@@ -1,6 +1,7 @@
 import React, {useState,useRef} from 'react';
 import {Formik,Form,Field,ErrorMessage} from 'formik'
 import { createTaskValidateSchema } from './ValidateSchemas';
+import CONSTANTS from '../../../constants'
 
 import styles from './InputeField.module.scss'
 import TaskDisplay from '../TaskDisplay/TaskDisplay'
@@ -157,6 +158,10 @@ function checkTimers() {
     return (
         <>
         <section className={styles.sec}>
+          <header className={styles.divchik}>
+            <div>Live upcomming checks</div>
+            <div>Remaining time <img src={`${CONSTANTS.STATIC_IMAGES_PATH}/eventsClock`} alt="clock" /></div>
+          </header>
             {count > 0 && <div className={styles.flag}>{count}</div>}
             {sortedTasks.length > 0 && <div className={styles.container}>
             {sortedTasks.map(task=>(<TaskDisplay key={task.id} task={task} taskDone={markTaskDone} removeTask={removeTask}/>))}
@@ -192,12 +197,12 @@ initAllReminders();
                         {(formikProps)=>(
                             <Form>
                                 <label>
-                                    <span>body</span>
+                                    <span>Body</span>
                                     <Field name='body'/>
                                     <ErrorMessage name='body'/>
                                 </label>
                                 <label>
-                                    <span>deadline</span>
+                                    <span>Deadline</span>
                                     <Field name='deadline' type='datetime-local'/>
                                     <ErrorMessage name='deadline'/>
                                 </label>
@@ -206,7 +211,7 @@ initAllReminders();
                                     <Field name='triger' type='datetime-local'/>
                                     <ErrorMessage name='triger'/>
                                 </label>
-                                <button type='submit'>Sub</button>
+                                <button type='submit' className={styles.subBtn}>Create</button>
                             </Form>
                         )}
                     </Formik>

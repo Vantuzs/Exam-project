@@ -11,7 +11,7 @@ const TaskDisplay = ({task,taskDone,removeTask}) => {
       setProgress(100);
       return;
     }
-
+background
     const interval = setInterval(() => {
       const now = Date.now();
       const startTime = new Date(task.createdAt).getTime();
@@ -43,18 +43,22 @@ const TaskDisplay = ({task,taskDone,removeTask}) => {
   }
 
     return (
-       <div
+      <>
+       <section
       style={{
         background
       }} 
       className={styles.box}
-    >
-      <h3>{task.body}</h3>
-      <p>Deadline: {task.deadline}</p>
-      {task.status === 'active' && <button onClick={() => taskDone(task.id)}>Закрыть</button>}
-      <button onClick={() => removeTask(task.id)}>Delete</button>
-      <Timer task={task}/>
-    </div>
+      >
+        <article className={styles.wrapper}>
+          <h3>{task.body}</h3>
+            {/* <p>Deadline: {new Date(task.deadline).toLocaleString()}</p> */}
+            {task.status === 'active' && <button className={styles.buttonGr} onClick={() => taskDone(task.id)}>Done</button>}
+            {task.status !== 'active' && <button className={styles.buttonGr} onClick={() => removeTask(task.id)}>Delete</button>}
+        </article>
+       <Timer task={task}/>
+    </section>
+        </>
     );
 }
 

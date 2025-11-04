@@ -30,35 +30,71 @@
 }
 
 .container{
-    border: 2px solid green;
+    // border: 2px solid green;
     padding: 0 5px;
     border-radius: 10px;
       overflow-wrap: break-word;
       max-width: 400px;
       overflow-y: auto;
       overflow-x: hidden;
-      height: 25vw;
-      max-height: 400px;
+      height: auto;
+      max-height: 160px;
+      overflow-y: auto;
+      overflow-x: hidden;
+
+        &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #adadad;
+    border-radius: 10px;
+    transition: background 0.3s;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #8d8d8d;
+  }
 }
 
 .wrapper{
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 1px solid;
+    // border: 1px solid;
+    border-radius: 7px;
+    box-shadow: -1px -1px 15px rgb(218, 216, 216);
     padding: 10px 15px;
+    background-color: #d3e2ff;
+    color:#3a6ac4;
     form{
         display: flex;
     flex-direction: column;
         button{
             width: 100px;
             margin: 0 auto;
+            margin-top: 7px;
+            padding: 3px 3px;
+            &:hover{
+                background-color: rgb(245, 245, 245);
+            }
         }
         label{
            span{
             width: 80px;
             display: inline-block;
            }
+           input{
+            border: none;
+            border-bottom: 1px solid #6fa1ff;
+            background-color:#d3e2ff;
+            color: #1a3c7c;
+           }
+           margin: 10px 0;
         }
     }
 }
@@ -67,6 +103,7 @@
     font-weight: 600;
     font-size: 22px;
     padding: 10px 5px;
+    color:#3a6ac4;
 }
 
 .flag {
@@ -86,4 +123,28 @@
 .sec{
     position: relative;
     display: inline-block;
+    background-color: rgb(241, 241, 241);
+    border-radius: 7px ;
+    padding: 10px;
+    width: auto;
+    max-height: 320px;
 }
+
+.divchik{
+    border-bottom: 1px solid gray;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 7px;
+    padding-bottom: 7px;
+    max-width: 400px;
+    width: auto;
+}
+
+.subBtn{
+    color: #3a6ac4;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    margin: 10px
+}
+

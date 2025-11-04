@@ -82,11 +82,11 @@ class App extends Component {
               <Route path="/contest/:id" element={<ContestPage />}/>
               <Route path="/account" element={<UserProfile />}/>
             <Route path="/moderator" element={<ModeratorDashbord />} />
+          <Route path='/events' element={<EventsPage/>}/>
             </Route>
             <Route path="*" element={<NotFound />} />
           </Route>
           <Route path='/atom' element={<AtomPage/>}/>
-          <Route path='/events' element={<EventsPage/>}/>
         </Routes>
         <ChatContainer />
       </Router>
