@@ -5,8 +5,12 @@ class WebSocket {
   constructor (dispatch, getState, room) {
     this.dispatch = dispatch;
     this.getState = getState;
-    this.socket = socketIoClient(`${CONSTANTS.BASE_URL}${room}`, {
-      origins: 'localhost:*',
+    const fullUrl = CONSTANTS.BASE_URL.endsWith('/') 
+      ? `${CONSTANTS.BASE_URL}${room}` 
+      : `${CONSTANTS.BASE_URL}/${room}`;
+this.socket = socketIoClient(fullUrl, {
+      transports: ['websocket', 'polling'], 
+      withCredentials: true 
     });
     this.listen();
   }

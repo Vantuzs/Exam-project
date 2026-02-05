@@ -128,10 +128,10 @@ class Header extends React.Component {
             <div className={styles.nav}>
               <ul>
                 <li>
-                  <a href="http://localhost:3000/atom" className={styles.events}>ATOM</a>
+                  <a href="/atom" className={styles.events}>ATOM</a>
                 </li>
                 {this.props.data?.role === CONSTANTS.CUSTOMER ? <li>
-                  <a href="http://localhost:3000/events" className={styles.events}>EVENTS</a>
+                  <a href="/events" className={styles.events}>EVENTS</a>
                 </li>: null}
                 <li>
                   <span>NAME IDEAS</span>

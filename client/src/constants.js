@@ -21,8 +21,8 @@ export default {
   ACCESS_TOKEN: 'accessToken',
   publicURL:
     env === 'production'
-      ? `http://${serverIP}:80/images/`
-      : `http://${serverIP}:${serverPort}/public/images/`,
+      ? `https://exam-project-giu0.onrender.com/public/images/`
+      : `https://exam-project-giu0.onrender.com/public/images/`,
   NORMAL_PREVIEW_CHAT_MODE: 'NORMAL_PREVIEW_CHAT_MODE',
   FAVORITE_PREVIEW_CHAT_MODE: 'FAVORITE_PREVIEW_CHAT_MODE',
   BLOCKED_PREVIEW_CHAT_MODE: 'BLOCKED_PREVIEW_CHAT_MODE',
