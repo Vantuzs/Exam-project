@@ -15,7 +15,11 @@ const PORT = process.env.PORT || 5000;
 const app = express();
 
 RotationTimer()
-app.use(cors());
+app.use(cors({
+  origin: 'https://exam-project-1123.onrender.com', // Твій URL фронтенда на Render
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+  credentials: true
+}));
 app.use(express.json());
 app.use('/public', express.static(FILES_PATH));
 app.use(router);
