@@ -1,150 +1,237 @@
-@media (max-width: 380px) {
-    .i-field{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    .container{
-        width: 290px;
-        max-width: 100%;
-    }
-    .wrapper{
-        width: auto;
-    }
-}
-
 @media (max-width: 730px) {
-    .i-field{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+  .i-field {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .container {
+    max-width: 330px;
+  }
 }
 
+@media (max-width: 380px) {
+  .i-field {
+    padding: 40px 0;
+  }
 
-.i-field{
-    padding: 100px 0;
+  .container {
+    width: 100%;
+  }
+}
+
+.i-field {
+  padding: 100px 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  flex-wrap: wrap;
+  background: #f5f7fb;
+  overflow-x: hidden;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  color: #3a6ac4;
+  padding: 20px 25px;
+  border-radius: 16px;
+  width: 350px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+
+  @media (max-width: 380px) {
+    width: 95%;
+    padding: 18px;
+  }
+
+  form {
+    width: 100%;
     display: flex;
-    justify-content: center;
-    gap: 10px;
+    flex-direction: column;
+    gap: 15px;
+
+    label {
+      display: flex;
+      flex-direction: column;
+      font-size: 14px;
+      font-weight: 600;
+      color: #425c8a;
+
+      input {
+        padding: 10px 12px;
+        margin-top: 6px;
+        background: #f1f4ff;
+        border-radius: 8px;
+        border: 1px solid #bfd3ff;
+        font-size: 14px;
+        color: #2f4e8c;
+        transition: 0.2s;
+
+        &:focus {
+          outline: none;
+          border-color: #6b8cff;
+          box-shadow: 0 0 0 3px rgba(123, 138, 255, 0.25);
+        }
+      }
+    }
+  }
 }
 
-.container{
-    // border: 2px solid green;
-    padding: 0 5px;
-    border-radius: 10px;
-      overflow-wrap: break-word;
-      max-width: 400px;
-      overflow-y: auto;
-      overflow-x: hidden;
-      height: auto;
-      max-height: 160px;
-      overflow-y: auto;
-      overflow-x: hidden;
+.head {
+  font-size: 21px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #2f4e8c;
+}
 
-        &::-webkit-scrollbar {
+.subBtn {
+  margin-top: 5px;
+  width: 100%;
+  padding: 12px;
+  background: #4c6ef5;
+  border: none;
+  color: #fff;
+  font-size: 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.25s;
+  font-weight: 600;
+
+  &:hover {
+    background: #3d5ee9;
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+.sec {
+  position: relative;
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 14px;
+  max-height: 350px;
+  max-width: 400px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+  width: 100%;
+  
+}
+
+.divchik {
+  border-bottom: 1px solid #c9c9c9;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  color: #2f4e8c;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.container {
+  max-height: 290px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 5px;
+
+  &::-webkit-scrollbar {
     width: 6px;
   }
 
-  &::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
   &::-webkit-scrollbar-thumb {
-    background: #adadad;
-    border-radius: 10px;
-    transition: background 0.3s;
+    background: #b9c4dd;
+    border-radius: 8px;
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background: #8d8d8d;
+    background: #94a3c7;
   }
-}
-
-.wrapper{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    // border: 1px solid;
-    border-radius: 7px;
-    box-shadow: -1px -1px 15px rgb(218, 216, 216);
-    padding: 10px 15px;
-    background-color: #d3e2ff;
-    color:#3a6ac4;
-    form{
-        display: flex;
-    flex-direction: column;
-        button{
-            width: 100px;
-            margin: 0 auto;
-            margin-top: 7px;
-            padding: 3px 3px;
-            &:hover{
-                background-color: rgb(245, 245, 245);
-            }
-        }
-        label{
-           span{
-            width: 80px;
-            display: inline-block;
-           }
-           input{
-            border: none;
-            border-bottom: 1px solid #6fa1ff;
-            background-color:#d3e2ff;
-            color: #1a3c7c;
-           }
-           margin: 10px 0;
-        }
-    }
-}
-
-.head{
-    font-weight: 600;
-    font-size: 22px;
-    padding: 10px 5px;
-    color:#3a6ac4;
 }
 
 .flag {
   position: absolute;
-  top: -10px;
-  right: -10px;
-  background-color: red;
+  top: 33px;
+  right: 2px;
+  width: 28px;
+  height: 28px;
+  background: #ff3b3b;
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
   border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  padding: 5px 9.5px;
-  color:aliceblue;
-  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+
+.closeBtn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0;
+  z-index: 100;
+
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 2px;
+    background: #333;
+    transform-origin: center;
+    transition: background 0.2s ease;
+  }
+
+  &:before {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  &:after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+
+  &:hover:before,
+  &:hover:after {
+    background: red;
+  }
+}
+
+.modalHeader {
+  position: relative;
+  padding: 15px 20px 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  overflow: hidden;
+}
+
+.title {
   font-size: 20px;
+  font-weight: 600;
+  color: #222;
+  margin: 0;
 }
 
-.sec{
-    position: relative;
-    display: inline-block;
-    background-color: rgb(241, 241, 241);
-    border-radius: 7px ;
-    padding: 10px;
-    width: auto;
-    max-height: 320px;
+.overdueCounter {
+  font-size: 14px;
+  color: #c50000;
+  font-weight: 600;
+  z-index: 20;
 }
 
-.divchik{
-    border-bottom: 1px solid gray;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 7px;
-    padding-bottom: 7px;
-    max-width: 400px;
-    width: auto;
-}
-
-.subBtn{
-    color: #3a6ac4;
-    background-color: #ffffff;
-    border: none;
-    border-radius: 20px;
-    margin: 10px
-}
 

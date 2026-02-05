@@ -13,15 +13,17 @@ const configPath =
         'src/server/config/postgresConfig.json'
       )
     : path.join(__dirname, '..', '/config/postgresConfig.json');
-const config = require(configPath)[env];
+const config = require('../config/config.js')[env];
 const db = {};
 
-const sequelize = new Sequelize(
-  config.database,
-  config.username,
-  config.password,
-  config
-);
+let sequelize;
+if (config.use_env_variable) {
+  // Це спрацює на Render (використовує DATABASE_URL)
+  sequelize = new Sequelize(process.env[config.use_env_variable], config);
+} else {
+  // Це спрацює локально в Docker
+  sequelize = new Sequelize(config.database, config.username, config.password, config);
+}
 
 fs.readdirSync(__dirname)
   .filter((file) => {

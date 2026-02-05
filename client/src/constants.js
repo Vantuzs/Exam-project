@@ -16,7 +16,8 @@ export default {
   OFFER_STATUS_PENDING: 'pending',
   STATIC_IMAGES_PATH: '/staticImages/',
   ANONYM_IMAGE_PATH: '/staticImages/anonym.png',
-  BASE_URL: `http://${serverIP}:${serverPort}/`,
+  BASE_URL: process.env.NODE_ENV === 'production' 
+  ? 'https://твій-сервер-на-render.onrender.com/':`http://${serverIP}:${serverPort}/`,
   ACCESS_TOKEN: 'accessToken',
   publicURL:
     env === 'production'

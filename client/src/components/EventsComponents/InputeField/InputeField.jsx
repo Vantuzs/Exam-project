@@ -1,6 +1,7 @@
-import React, {useState,useRef} from 'react';
+import React, {useState,useRef,useEffect} from 'react';
 import {Formik,Form,Field,ErrorMessage} from 'formik'
 import { createTaskValidateSchema } from './ValidateSchemas';
+import { ToastContainer,toast } from 'react-toastify';
 import CONSTANTS from '../../../constants'
 
 import styles from './InputeField.module.scss'
@@ -15,16 +16,19 @@ const initialValues = {
     status: 'active'
 }
 
-
-
 const InputeField = () => {
   const [stateTasks,setStateTasks] = useState(getTasks())
-
+  
   const Timers = useRef(new Map())
 
-  function getTasks() {
+  useEffect(() => {
+  initAllReminders();
+}, []);
+
+  
+function getTasks() {
   return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
-}
+  }
 
 function saveTasks(tasks) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
@@ -81,19 +85,56 @@ function scheduleTaskReminder(task) {
   
   if (reminderTime > now) {
     timers.warningTimer = setTimeout(() => {
-      console.log(`Напоминание по задаче ${task.id}`);
+      toast.warning(`Напоминание по задаче ${task.body}`,{
+      position: "bottom-right",
+  autoClose: 5000,
+  hideProgressBar: false,
+  closeOnClick: false,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+  theme: "light", 
+  })
     }, reminderTime - now);
   } else if (reminderTime <= now && reminderTime > now - 60000) {
-    console.log(`Напоминание (пропущенное) по задаче ${task.id}`);
+    toast.warning(`Напоминание (пропущенное) по задаче ${task.body}`,{
+      position: "bottom-right",
+  autoClose: 5000,
+  hideProgressBar: false,
+  closeOnClick: false,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+  theme: "light", 
+  })
   }
   
   if (deadlineTime > now) {
     timers.deadlineTimer = setTimeout(() => {
-      console.log(`Дедлайн по задаче ${task.id} наступил!`);
+      toast.error(`Дедлайн по задаче ${task.body} наступил!`,{
+      position: "bottom-right",
+  autoClose: 5000,
+  hideProgressBar: false,
+  closeOnClick: false,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+  theme: "light", 
+  })
       markTaskExpired(task.id)
     }, deadlineTime - now);
   } else if (deadlineTime <= now && deadlineTime > now - 60000) {
-    console.log(`Дедлайн (пропущенный) по задаче ${task.id}`);
+    console.log(`Дедлайн (пропущенный) по задаче ${task.body}`);
+     toast.error(`Дедлайн (пропущенный) по задаче ${task.body} наступил!`,{
+      position: "bottom-right",
+  autoClose: 5000,
+  hideProgressBar: false,
+  closeOnClick: false,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+  theme: "light", 
+  })
   }
   
   Timers.current.set(task.id,timers)
@@ -120,8 +161,31 @@ function removeTask(id) {
 
   setStateTasks((state)=> state.filter(t => t.id !==id))
 
-  console.log(`Задача ${id} удалена`);
+  console.log(`Задача ${task.body} удалена`);
+  console.log(task);
+  toast.info(`Задача ${task.body} удалена`, {
+position: "bottom-right",
+autoClose: 5000,
+hideProgressBar: false,
+closeOnClick: false,
+pauseOnHover: true,
+draggable: true,
+progress: undefined,
+theme: "light",
+})
 }
+
+function updateTask(id, newData) {
+  let tasks = getTasks();
+  const updated = tasks.map(t =>
+    t.id === id ? { ...t, ...newData } : t
+  );
+
+  saveTasks(updated);
+  setStateTasks(updated);
+  scheduleTaskReminder(updated.find(t => t.id === id));
+}
+
 
 function markTaskExpired(id) {
   const tasks = getTasks();
@@ -135,10 +199,21 @@ setStateTasks(()=> updated)
 
 function markTaskDone(id) {
   const tasks = getTasks();
+  const task = tasks.find(t => t.id === id);
   const updated = tasks.map(t =>
     t.id === id ? {...t, status: "done"}: t
 );
 deleteTimers(id)
+toast.success(`Задача ${task.body} Выполнена!!`, {
+position: "bottom-right",
+autoClose: 5000,
+hideProgressBar: false,
+closeOnClick: false,
+pauseOnHover: true,
+draggable: true,
+progress: undefined,
+theme: "light",
+})
 setStateTasks(()=> updated)
   saveTasks(updated);
 }
@@ -164,14 +239,12 @@ function checkTimers() {
           </header>
             {count > 0 && <div className={styles.flag}>{count}</div>}
             {sortedTasks.length > 0 && <div className={styles.container}>
-            {sortedTasks.map(task=>(<TaskDisplay key={task.id} task={task} taskDone={markTaskDone} removeTask={removeTask}/>))}
+            {sortedTasks.map(task=>(<TaskDisplay key={task.id} task={task} taskDone={markTaskDone} removeTask={removeTask} updateTask={updateTask}/>))}
             </div>}
         </section>
         </>
     )
 }
-
-initAllReminders();
 
 
     const HandleSubmit = (values,{resetForm})=>{
@@ -185,8 +258,9 @@ initAllReminders();
         <section className={styles['i-field']}>
             <div className={styles.conteiner}>
                 <div className={styles.wrapper}>
+
                     <div className={styles['head']}>
-                        <h4>Create you Task</h4>
+                        <h4>Create you Event</h4>
                     </div>
 
                     <Formik
