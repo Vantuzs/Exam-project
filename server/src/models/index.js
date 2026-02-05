@@ -18,10 +18,19 @@ const db = {};
 
 let sequelize;
 if (config.use_env_variable) {
-  // Це спрацює на Render (використовує DATABASE_URL)
-  sequelize = new Sequelize(process.env[config.use_env_variable], config);
+  // На Render: використовуємо DATABASE_URL + додаємо обов'язкові опції
+  sequelize = new Sequelize(process.env[config.use_env_variable], {
+    ...config,
+    dialect: 'postgres', // Явно вказуємо діалект
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false // Це дозволить підключитися до сертифікатів Render
+      }
+    }
+  });
 } else {
-  // Це спрацює локально в Docker
+  // Локально (Docker)
   sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
 
