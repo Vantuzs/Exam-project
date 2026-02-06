@@ -215,3 +215,27 @@ module.exports.cashout = async (req, res, next) => {
 };
 
 
+module.exports.getUser = async (req, res, next) => {
+  try {
+    // req.tokenData.userId приходить з твого мідлвара checkAuth
+    const foundUser = await userQueries.findUser({ id: req.tokenData.userId });
+    
+    if (!foundUser) {
+      return res.status(404).send('User not found');
+    }
+
+    res.send({
+      firstName: foundUser.firstName,
+      lastName: foundUser.lastName,
+      displayName: foundUser.displayName,
+      avatar: foundUser.avatar,
+      email: foundUser.email,
+      balance: foundUser.balance,
+      role: foundUser.role,
+      id: foundUser.id,
+      rating: foundUser.rating
+    });
+  } catch (err) {
+    next(err);
+  }
+};
