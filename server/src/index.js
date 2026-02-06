@@ -37,7 +37,7 @@ const db = require('./models'); // шлях до твоїх моделей
 // Замість просто app.listen, зроби так:
 db.sequelize.sync({ force: false }) // force: false не видалятиме дані, якщо вони з'являться
   .then(() => {
-    app.listen(PORT, () => {
+    server.listen(PORT, () => {
       console.log(`Server is running on port ${PORT} and DB is synced!`);
     });
   })
