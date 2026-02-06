@@ -16,7 +16,7 @@ const app = express();
 
 RotationTimer()
 app.use(cors({
-  origin: 'https://exam-project-1123.onrender.com', // Твій URL фронтенда на Render
+  origin: 'https://exam-project-3223.onrender.com/', // Твій URL фронтенда на Render
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
   credentials: true
 }));
