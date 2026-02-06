@@ -28,7 +28,21 @@ app.use(multerErrorHandler);
 app.use(handlerError);
 
 const server = http.createServer(app);
-server.listen(PORT, () =>
-  console.log(`Example app listening on port ${PORT}!`)
-);
+// server.listen(PORT, () =>
+//   console.log(`Example app listening on port ${PORT}!`)
+// );
+
+const db = require('./models'); // шлях до твоїх моделей
+
+// Замість просто app.listen, зроби так:
+db.sequelize.sync({ force: false }) // force: false не видалятиме дані, якщо вони з'являться
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT} and DB is synced!`);
+    });
+  })
+  .catch(err => {
+    console.error('Unable to sync database:', err);
+  });
+
 controller.createConnection(server);
