@@ -16,9 +16,10 @@ const app = express();
 
 RotationTimer()
 app.use(cors({
-  origin: 'https://exam-project-3223.onrender.com', // Твій URL фронтенда на Render
+  origin: 'https://exam-project-3223.onrender.com', 
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
-  credentials: true
+  credentials: true,
+  optionsSuccessStatus: 200 // Додай це для кращої сумісності
 }));
 app.use(express.json());
 app.use('/public', express.static(FILES_PATH));
