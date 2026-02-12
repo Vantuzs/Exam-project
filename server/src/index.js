@@ -49,6 +49,8 @@ const db = require('./models'); // шлях до твоїх моделей
 
 // --- ВСТАВИТИ ЗАМІСТЬ СТАРОГО db.sequelize.sync() ---
 
+// --- ПОВНІСТЮ ГОТОВИЙ БЛОК ДЛЯ index.js ---
+
 const SELECTS_DATA = [
   { type: 'typeOfName', describe: 'Company' },
   { type: 'typeOfName', describe: 'Product' },
@@ -80,33 +82,51 @@ const SELECTS_DATA = [
   { type: 'industry', describe: 'Footwear' },
   { type: 'industry', describe: 'Medical' },
   { type: 'industry', describe: 'Builders' }
-].map(item => ({
-  ...item,
-  createdAt: new Date(),
-  updatedAt: new Date()
-}));
+].map(item => ({ ...item, createdAt: new Date(), updatedAt: new Date() }));
+
+const BANKS_DATA = [
+  {
+    cardNumber: '4564654564564564',
+    name: 'SquadHelp',
+    expiry: '11/26',
+    cvc: '453',
+    balance: 200000,
+  },
+  {
+    cardNumber: '4111111111111111',
+    name: 'yriy',
+    expiry: '09/26',
+    cvc: '505',
+    balance: 5000,
+  },
+].map(item => ({ ...item, createdAt: new Date(), updatedAt: new Date() }));
 
 db.sequelize.sync({ force: false })
   .then(async () => {
     try {
-      // Перевіряємо, чи таблиця Selects пуста
-      const count = await db.Selects.count();
-      
-      if (count === 0) {
-        console.log('--- Database is empty. Starting seeding... ---');
+      // 1. Сидимо Selects
+      const selectsCount = await db.Selects.count();
+      if (selectsCount === 0) {
+        console.log('--- Seeding Selects... ---');
         await db.Selects.bulkCreate(SELECTS_DATA);
-        console.log('--- Seed data for Selects added successfully! ---');
-      } else {
-        console.log('--- Selects already have data. Skipping seed. ---');
+        console.log('--- Selects seeded! ---');
       }
+
+      // 2. Сидимо Banks
+      const banksCount = await db.Banks.count();
+      if (banksCount === 0) {
+        console.log('--- Seeding Banks... ---');
+        await db.Banks.bulkCreate(BANKS_DATA);
+        console.log('--- Banks seeded! ---');
+      }
+
     } catch (seedError) {
-      console.error('--- Seeding error:', seedError.message);
+      console.error('--- Seeding Error:', seedError.message);
     }
 
-    // Запуск сервера (використовуй свою змінну PORT та server/app)
     const PORT = process.env.PORT || 5000;
     server.listen(PORT, () => {
-      console.log(`--- Server is running on port ${PORT} and DB is synced! ---`);
+      console.log(`--- Server is live on port ${PORT} ---`);
     });
   })
   .catch((err) => {
