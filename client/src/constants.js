@@ -17,12 +17,12 @@ export default {
   STATIC_IMAGES_PATH: '/staticImages/',
   ANONYM_IMAGE_PATH: '/staticImages/anonym.png',
   BASE_URL: process.env.NODE_ENV === 'production' 
-  ? 'https://exam-project-3223.onrender.com/':'https://exam-project-3223.onrender.com/',
+  ? 'https://exam-project-322.onrender.com':'https://exam-project-322.onrender.com',
   ACCESS_TOKEN: 'accessToken',
   publicURL:
     env === 'production'
-      ? `https://exam-project-3223.onrender.com//public/images/`
-      : `https://exam-project-3223.onrender.com//public/images/`,
+      ? `https://exam-project-322.onrender.com/public/images/`
+      : `https://exam-project-322.onrender.com/public/images/`,
   NORMAL_PREVIEW_CHAT_MODE: 'NORMAL_PREVIEW_CHAT_MODE',
   FAVORITE_PREVIEW_CHAT_MODE: 'FAVORITE_PREVIEW_CHAT_MODE',
   BLOCKED_PREVIEW_CHAT_MODE: 'BLOCKED_PREVIEW_CHAT_MODE',
