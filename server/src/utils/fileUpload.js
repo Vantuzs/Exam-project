@@ -20,7 +20,7 @@ const devFilePath = path.resolve(FILES_PATH,'images');
 
 // На Render (production) використовуємо шлях усередині папки проекту
 const filePath = env === 'production'
-  ? path.resolve(__dirname, '../../public/images') // Піднімись вище до папки public
+  ? path.resolve(__dirname, '../public/images') // Піднімись вище до папки public
   : devFilePath;
 
 // Перевірка та створення папки (це у тебе вже добре зроблено)
