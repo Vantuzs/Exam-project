@@ -6,10 +6,24 @@ const {FILES_PATH} = require('../constants')
 const env = process.env.NODE_ENV || 'development';
 const devFilePath = path.resolve(FILES_PATH,'images');
 
+// const filePath = env === 'production'
+//   ? '/var/www/html/images/'
+//   : devFilePath;
+
+// if (!fs.existsSync(filePath)) {
+//   fs.mkdirSync(filePath, {
+//     recursive: true,
+//   });
+// }
+
+// Автоматично визначаємо корінь проекту
+
+// На Render (production) використовуємо шлях усередині папки проекту
 const filePath = env === 'production'
-  ? '/var/www/html/images/'
+  ? path.resolve(__dirname, '../../public/images') // Піднімись вище до папки public
   : devFilePath;
 
+// Перевірка та створення папки (це у тебе вже добре зроблено)
 if (!fs.existsSync(filePath)) {
   fs.mkdirSync(filePath, {
     recursive: true,
