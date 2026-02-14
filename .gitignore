@@ -7,9 +7,9 @@
 ./server/upload
 ./server/public
 
-./server/public/images
-.server/public/images
-**server/public/*
-*server/public/*
+# ./server/public/images
+# .server/public/images
+# **server/public/*
+# *server/public/*
 
 .env
